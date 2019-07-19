@@ -1,0 +1,107 @@
+{	
+	"extensionName": "Vietduino_Button",
+	"description": "Vietduino_Button extensions for Arduino",
+	"version": "1.0",
+	"author": "Vietduino.vn",
+	"homepage": "Vietduino.vn",
+	"sort":0,
+	"javascriptURL":"js/Vietduino_Button.js",
+  	"firmware":"1.0",
+  	"extensionPort":0,
+	"tags" : "makeblock,demo",
+	"blockSpecs": [
+		["h","Vietduino Program","runArduino"],
+
+		[
+			"b",
+			"Vietduino_Clicked_Button - %n",
+			"Vietduino_Clicked",
+			"8",
+			{
+				"setup":"btn{0}.begin({0}); \n",
+				"inc":"#include \"Vietduino_Button.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def":"\nVietduino_Button btn{0}; \n",
+				"work":"btn{0}.available(_CLICKED_)",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+		[
+			"b",
+			"Vietduino_Double-Clicked_Button - %n",
+			"Vietduino_Double-Clicked",
+			"8",
+			{
+				"setup": "btn{0}.begin({0}); \n",
+				"inc": "#include \"Vietduino_Button.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def": "\nVietduino_Button btn{0}; \n",
+				"work": "btn{0}.available(_DOUBLE_CLICKED_)",
+				"loop": "VIETDUINO_UPDATE;"
+				}
+		],
+
+		[
+			"b",
+			"Vietduino_Long-Clicked_Button - %n",
+			"Vietduino_Long-Clicked",
+			"8",
+			{
+				"setup": "btn{0}.begin({0}); \n",
+				"inc": "#include \"Vietduino_Button.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def": "\nVietduino_Button btn{0}; \n",
+				"work": "btn{0}.available(_LONG_CLICKED_)",
+				"loop": "VIETDUINO_UPDATE;"
+			}
+		],
+
+		[
+			"b",
+			"Vietduino_Pressed_Button - %n",
+			"Vietduino_Pressed",
+			"8",
+			{
+				"setup": "btn{0}.begin({0}); \n",
+				"inc": "#include \"Vietduino_Button.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def": "\nVietduino_Button btn{0}; \n",
+				"work": "btn{0}.available(_PRESSED_)",
+				"loop": "VIETDUINO_UPDATE;"
+			}
+		],
+
+		[
+			"b",
+			"Vietduino_Button - %n is %d.btnstatus",
+			"Vietduino_Button",
+			"8",
+			"Clicked",
+			{
+				"setup": "btn{0}.begin({0}); \n",
+				"inc": "#include \"Vietduino_Button.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def": "\nVietduino_Button btn{0}; \n",
+				"work": "btn{0}.available({1})",
+				"loop": "VIETDUINO_UPDATE;"
+			}
+		]
+
+
+	],
+	"menus": {
+		"btnstatus":["Clicked","Double-Clicked","Long-Clicked","Pressed","During-Long-Press"]
+	},
+	"values":{
+		"Clicked":1,
+		"Double-Clicked":2,
+		"Long-Clicked":3,
+		"Pressed":4,
+		"During-Long-Press":5
+	},
+	"translators":{
+		"zh_CN":{
+			"Demo Program":"演示程序",
+			"HIGH":"高电平",
+			"LOW":"低电平",
+			"digitalWrite( %n , %d.digital )":"数字口输出( %n ,%d.digital )",
+      "blink":"闪烁"
+		}
+	}
+}

@@ -1,0 +1,93 @@
+{	
+	"extensionName": "Vietduino_Led",
+	"description": "Vietduino_Led extensions for Arduino",
+	"version": "1.0",
+	"author": "Hshop@LTK.vn",
+	"homepage": "Hshop.vn",
+	"sort":0,
+	"javascriptURL":"js/Vietduino_Led.js",
+  	"firmware":"1.0",
+  	"extensionPort":0,
+	"tags" : "makeblock,demo",
+	"blockSpecs": [
+		["h","Vietduino Program","runArduino"],
+
+		[
+			"w",
+			"Vietduino_Led_Setpin - LedPin %n, LedActive %d.digital",
+			"Vietduino_Led_Setpin",
+			"13",
+			"HIGH",
+			{
+				"setup":"",
+				"inc":"#include \"Vietduino_Led.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def":"Vietduino_Led Led{0}({0},{1});\n",
+				"work":"",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+		[
+			"w",
+			"Vietduino_Led_Write - LedPin %n, TimeOn %n, TimeOff %n, Count %n, TimeRepeat %n",
+			"Vietduino_Led_Write",
+			"13",
+			"100",
+			"100",
+			"0",
+			"0",
+			{
+				"setup":"",
+				"inc":"#include \"Vietduino_Led.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def":"Vietduino_Led Led{0}({0},1);\n",
+				"work":"Led{0}.write({1},{2},{3},{4});\n",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+		[
+			"w",
+			"Vietduino_Led_Start - LedPin %n",
+			"Vietduino_Led_Start",
+			"13",
+			{
+				"setup":"",
+				"inc":"#include \"Vietduino_Led.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def":"Vietduino_Led Led{0}({0},1);\n",
+				"work":"Led{0}.start();\n",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+		[
+			"w",
+			"Vietduino_Led_Stop - LedPin %n",
+			"Vietduino_Led_Stop",
+			"13",
+			{
+				"setup":"",
+				"inc":"#include \"Vietduino_Led.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def":"Vietduino_Led Led{0}({0},1);\n",
+				"work":"Led{0}.stop();\n",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		]
+
+	],
+	"menus": {
+		"digital":["HIGH","LOW"]
+	},
+	"values":{
+		"HIGH":1,
+		"LOW":0
+	},
+	"translators":{
+		"zh_CN":{
+			"Demo Program":"演示程序",
+			"HIGH":"高电平",
+			"LOW":"低电平",
+			"digitalWrite( %n , %d.digital )":"数字口输出( %n ,%d.digital )",
+      "blink":"闪烁"
+		}
+	}
+}
