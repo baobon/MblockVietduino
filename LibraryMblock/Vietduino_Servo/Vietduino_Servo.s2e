@@ -1,0 +1,64 @@
+{	
+	"extensionName": "Vietduino_Servo",
+	"description": "Vietduino_Servo extensions for Arduino",
+	"version": "1.0",
+	"author": "Vietduino.vn",
+	"homepage": "Vietduino.vn",
+	"sort":0,
+	"javascriptURL":"js/Vietduino_Servo.js",
+  	"firmware":"1.0",
+  	"extensionPort":0,
+	"tags" : "makeblock,demo",
+	"blockSpecs": [
+		["h","Vietduino Program","runArduino"],
+
+		[
+			"w",
+			"Vietduino_Servo_Write - ServoPin %d.pin, Angle %n Speed %n ",
+			"Vietduino_Servo_Write",
+			"9",
+			"90",
+			"100",
+			{
+				"setup":"Servo{0}.begin({0});",
+				"inc":"#include \"Vietduino_Servo.h\"\n#include \"Servo.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def":"Vietduino_Servo Servo{0};\n",
+				"work":"Servo{0}.write({1},{2});",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+		[
+			"w",
+			"Vietduino_Servo_WriteFor - ServoPin %d.pin, Angle %n Time(ms) %n ",
+			"Vietduino_Servo_Write",
+			"9",
+			"90",
+			"100",
+			{
+				"setup":"Servo{0}.begin({0});",
+				"inc":"#include \"Vietduino_Servo.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def":"Vietduino_Servo Servo{0};\n",
+				"work":"Servo{0}.write_for({1},{2});",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		]
+
+	],
+	"menus": {
+		"digital":["9","10"]
+	},
+	"values":{
+		"9":9,
+		"10":10
+	},
+	"translators":{
+		"zh_CN":{
+			"Demo Program":"演示程序",
+			"HIGH":"高电平",
+			"LOW":"低电平",
+			"digitalWrite( %n , %d.digital )":"数字口输出( %n ,%d.digital )",
+      "blink":"闪烁"
+		}
+	}
+}

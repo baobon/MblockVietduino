@@ -1,0 +1,69 @@
+{	
+	"extensionName": "Vietduino_DCmotor",
+	"description": "Vietduino_DCmotor extensions for Arduino",
+	"version": "1.0",
+	"author": "Vietduino.vn",
+	"homepage": "Vietduino.vn",
+	"sort":0,
+	"javascriptURL":"js/Vietduino_DCmotor.js",
+  	"firmware":"1.0",
+  	"extensionPort":0,
+	"tags" : "makeblock,demo",
+	"blockSpecs": [
+		["h","Vietduino Program","runArduino"],
+
+		[
+			"w",
+			"Vietduino_Leftmotor_Write Direction %d.direction Speed %d.speed TimeRun %d.times",
+			"Vietduino_Leftmotor_Write",
+			"BackWard",
+			"100",
+			"0",
+			{
+				"setup":"",
+				"inc":"#include \"Vietduino_DCmotor.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def":"Vietduino_DCmotor LeftMotor(1);\n",
+				"work":"LeftMotor.write({0},{1},{2});\n",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+				[
+					"w",
+					"Vietduino_RightMotor_Write Direction %d.direction Speed %d.speed TimeRun %d.times",
+					"Vietduino_RightMotor_Write",
+					"BackWard",
+					"100",
+					"0",
+					{
+						"setup": "",
+						"inc": "#include \"Vietduino_DCmotor.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+						"def": "Vietduino_DCmotor RightMotor(2);\n",
+						"work": "RightMotor.write({0},{1},{2});\n",
+						"loop": "VIETDUINO_UPDATE;"
+					}
+				]
+
+	],
+	"menus": {
+		"direction":["BackWard","ForWard"],
+		"speed":["25","50","75","100"]
+	},
+	"values":{
+		"BackWard":0,
+		"ForWard":1,
+		"25":25,
+		"50":50,
+		"75":75,
+		"100":100
+	},
+	"translators":{
+		"zh_CN":{
+			"Demo Program":"演示程序",
+			"HIGH":"高电平",
+			"LOW":"低电平",
+			"digitalWrite( %n , %d.digital )":"数字口输出( %n ,%d.digital )",
+      "blink":"闪烁"
+		}
+	}
+}

@@ -24,14 +24,21 @@
 
 */
 
-#ifndef _VIETDUINO_MANAGER_H_
-#define _VIETDUINO_MANAGER_H_
+#ifndef _VIETDUINO_H_MANAGER_PRIORITY_H_
+#define _VIETDUINO_H_MANAGER_PRIORITY_H_
 
 #include "Vietduino_Task.h"
-#define    VIETDUINO_UPDATE      Vietduino_Manager.run();
-#define    VIETDUINO_TASK        * me
+#define     VIETDUINO_UPDATE        Vietduino_Manager_3.run();
+#define     VIETDUINO_TASK          * me
 
-class Vietduino_Manager_class
+//#define MANAGER_PRI_DB_EN
+
+#ifdef  MANAGER_PRI_DB_EN
+    #define MANAGER_PRI_DB(x)       Serial.println(x)
+#else
+#define MANAGER_PRI_DB(x)
+#endif
+class Vietduino_Manager_Priority_class
 {
   public:
   
@@ -48,12 +55,42 @@ class Vietduino_Manager_class
     /**
      * For internal use only. You do not need to call this function.
      */
+    #ifdef  MANAGER_PRI_DB_EN
+        String myString;
+
+        Vietduino_Manager_Priority_class(Vietduino_Manager_Priority_class * _p_higher_priority_class, String _str_db){
+            p_higher_priority_class = _p_higher_priority_class;
+            myString = _str_db;
+        }
+
+    #endif
+
+    Vietduino_Manager_Priority_class(Vietduino_Manager_Priority_class * _p_higher_priority_class){
+        p_higher_priority_class = _p_higher_priority_class;
+    }
+
+    Vietduino_Manager_Priority_class(){
+        p_higher_priority_class = 0;
+    #ifdef  MANAGER_PRI_DB_EN
+        myString = "Highest!!";
+    #endif
+    }
+
+    Vietduino_Manager_Priority_class * p_higher_priority_class;
+
     void run();
   private:
     void testAndCall(Vietduino_Task* task);
     Vietduino_Task* _tasks;
+
 };
 
-extern Vietduino_Manager_class Vietduino_Manager;
+extern "C" {
+    typedef Vietduino_Manager_Priority_class * p_Priority_class;
+}
+
+extern Vietduino_Manager_Priority_class Vietduino_Manager_1;
+extern Vietduino_Manager_Priority_class Vietduino_Manager_2;
+extern Vietduino_Manager_Priority_class Vietduino_Manager_3;
 
 #endif

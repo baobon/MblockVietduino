@@ -1,5 +1,5 @@
 /**
- * File: Vietduino_Manager.cpp
+ * File: Vietduino_Manager_Priority.cpp
  * Description:
  * Vietduino_Manager library base on SoftTimer library which is a lightweight but effective event based timeshare solution for Arduino.
  *
@@ -9,7 +9,7 @@
  * Copyright: 2018 Ngoc Khuu
  * Copying permission statement:
 
-    Vietduino_Manager is free software: you can redistribute it and/or modify
+    Vietduino_Manager_Priority is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
@@ -25,12 +25,12 @@
 */
 
 #include "Arduino.h"
-#include "Vietduino_Manager.h"
+#include "Vietduino_Manager_Priority.h"
 
 /**
  * Register a task in the timer Vietduino_Manager.
  */
-void Vietduino_Manager_class::add(Vietduino_Task* task) {
+void Vietduino_Manager_Priority_class::add(Vietduino_Task* task) {
 
   // -- A task should be registered only once.
   this->remove(task);
@@ -60,7 +60,7 @@ void Vietduino_Manager_class::add(Vietduino_Task* task) {
 /**
  * Remove registration of a task in the timer manager.
  */
-void Vietduino_Manager_class::remove(Vietduino_Task* task) {
+void Vietduino_Manager_Priority_class::remove(Vietduino_Task* task) {
   if(this->_tasks != NULL) {
     if(this->_tasks == task) {
       // -- This was the first task.
@@ -83,19 +83,31 @@ void Vietduino_Manager_class::remove(Vietduino_Task* task) {
 /**
  * Walk through the chain looking for task to call.
  */
-void Vietduino_Manager_class::run() {
+void Vietduino_Manager_Priority_class::run() {
     Vietduino_Task* task = this->_tasks;
     // -- (If this->_tasks is NULL, than nothing is registered.)
-    while(task != NULL) {
-      this->testAndCall(task);
-      task = task->nextTask;
+    if(task != NULL){
+        while(task != NULL) {
+            if(this->p_higher_priority_class){
+                this->p_higher_priority_class->run();
+                MANAGER_PRI_DB("run while higher in " + myString);
+            }
+
+            this->testAndCall(task);
+            task = task->nextTask;
+        }
+    }else{
+        if(this->p_higher_priority_class){
+            this->p_higher_priority_class->run();
+            MANAGER_PRI_DB("run if higher in " + myString);
+        }
     }
 }
 
 /**
  * Test a task and call the callback if its period was passed since last call.
  */
-void Vietduino_Manager_class::testAndCall(Vietduino_Task* task) {
+void Vietduino_Manager_Priority_class::testAndCall(Vietduino_Task* task) {
   unsigned long now = micros();
   unsigned long calc = task->lastCallTimeMicros + task->periodMicros;
   if(
@@ -115,4 +127,11 @@ void Vietduino_Manager_class::testAndCall(Vietduino_Task* task) {
 /**
  * Create a singleton from this manager class.
  */
-Vietduino_Manager_class Vietduino_Manager;
+Vietduino_Manager_Priority_class Vietduino_Manager_1;
+#ifdef  MANAGER_PRI_DB_EN
+    Vietduino_Manager_Priority_class Vietduino_Manager_2(&Vietduino_Manager_1, "Manager_2");
+    Vietduino_Manager_Priority_class Vietduino_Manager_3(&Vietduino_Manager_2, "Manager_3");
+#else
+    Vietduino_Manager_Priority_class Vietduino_Manager_2(&Vietduino_Manager_1);
+    Vietduino_Manager_Priority_class Vietduino_Manager_3(&Vietduino_Manager_2);
+#endif
