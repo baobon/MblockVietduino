@@ -16,9 +16,9 @@ void loop() {
 }
 
 CREATE_FUNCTION(myVoid3) {
-  myServo.write(90, 10);
-  M_DELAY(3000);
-   myServo.write(180, 10);
-  M_DELAY(3000);
+  myServo.write_for(0,3000);
+  M_DELAY(2000);
+  myServo.write_for(180,3000);
+  M_DELAY(2000);
   END_CREATE_FUNCTION
 }
