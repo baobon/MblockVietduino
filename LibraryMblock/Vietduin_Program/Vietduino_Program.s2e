@@ -1,0 +1,43 @@
+{	
+	"extensionName": "Vietduino_Program",
+	"description": "Vietduino_Program extensions for Arduino",
+	"version": "1.0",
+	"author": "BQB - Vietduino.com",
+	"homepage": "Vietduino.com",
+	"sort":0,
+	"javascriptURL":"js/Vietduino_Program.js",
+  	"firmware":"1.0",
+  	"extensionPort":0,
+	"tags" : "makeblock,demo",
+	"blockSpecs": [
+		["h","Vietduino Program","runArduino"],
+
+		[
+			"w",
+			"Vietduino_Serial_Write text %s",
+			"Vietduino_Serial_Write",
+			"Vietduino Hello",
+			{
+				"setup":"Serial.begin(115200);\n",
+				"inc":"",
+				"def":"",
+				"work":"Serial.println({0});\n",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		]
+
+	],
+	"menus": {
+	},
+	"values":{
+	},
+	"translators":{
+		"zh_CN":{
+			"Demo Program":"演示程序",
+			"HIGH":"高电平",
+			"LOW":"低电平",
+			"digitalWrite( %n , %d.digital )":"数字口输出( %n ,%d.digital )",
+      "blink":"闪烁"
+		}
+	}
+}
