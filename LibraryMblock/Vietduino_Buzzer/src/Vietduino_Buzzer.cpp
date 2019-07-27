@@ -51,7 +51,7 @@ void Vietduino_Buzzer::init(byte b_outPin, unsigned long onUs, unsigned long off
 void Vietduino_Buzzer::on()
 {
     // this->_state = BUZZER_STATE_ON;
-    this->_state = BUZZER_STATE_OFF;
+    this->_state = BUZZER_STATE_ON;
     this->write(429496, 1, 0, 0);
 }
 
@@ -65,7 +65,7 @@ void Vietduino_Buzzer::start()
 }
 
 void Vietduino_Buzzer::stop()
-{
+{	noTone(3);
     this->_isrun = false;
     Vietduino_Manager_3.remove(this);
 }
