@@ -19,17 +19,78 @@
 			"Vietduino Hello",
 			{
 				"setup":"Serial.begin(115200);\n",
-				"inc":"",
+				"inc":"#include \"Vietduino_NewFunction.h\"\n#include \"Servo.h\"\n",
 				"def":"",
 				"work":"Serial.println({0});\n",
 				"loop":"VIETDUINO_UPDATE;"
 			}
-		]
+		],
+
+		[
+			"b",
+			"Vietduino_Digital_Read Pin %d.digital",
+			"Vietduino_Digital_Read",
+			"11",
+			{
+				"setup":"pinMode({0},INPUT_PULLUP);\n",
+				"inc":"#include \"Vietduino_NewFunction.h\"\n#include \"Servo.h\"\n",
+				"def":"",
+				"work":"digitalRead({0})",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+		[
+			"r",
+			"Vietduino_Analog_Read Pin %d.analog",
+			"Vietduino_Analog_Read",
+			"A0",
+			{
+				"setup":"pinMode(A{0},INPUT);\n",
+				"inc":"#include \"Vietduino_NewFunction.h\"\n#include \"Servo.h\"\n",
+				"def":"",
+				"work":"analogRead(A{0})\n",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+		[
+			"w",
+			"Vietduino_Digital_Write Pin %n to %d.w_digital",
+			"Vietduino_Digital_Write",
+			"13",
+			"HIGH",
+			{
+				"setup":"pinMode({0},OUTPUT);\n",
+				"inc":"#include \"Vietduino_NewFunction.h\"\n#include \"Servo.h\"\n",
+				"def":"",
+				"work":"digitalWrite({0},{1});\n",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+
 
 	],
 	"menus": {
+	"digital":["D12","D13","D11","D2","D3"],
+	"analog":["A0","A1","A2","A3"],
+	"w_digital":["HIGH","LOW"]
 	},
 	"values":{
+		"D12":12,
+		"D13":13,
+		"D11":11,
+		"D2":2,
+		"D3":3,
+		// For Analog
+		"A0":0,
+		"A1":1,
+		"A2":2,
+		"A3":3,
+		//For Status D
+		"HIGH":1,
+		"LOW":0
 	},
 	"translators":{
 		"zh_CN":{
