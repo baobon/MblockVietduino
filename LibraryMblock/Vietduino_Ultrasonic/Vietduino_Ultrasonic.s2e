@@ -1,0 +1,48 @@
+{	
+	"extensionName": "Vietduino_Ultrasonic",
+	"description": "Vietduino_Ultrasonic extensions for Arduino",
+	"version": "1.0",
+	"author": "BQB - Vietduino.com",
+	"homepage": "Vietduino.com",
+	"sort":0,
+	"javascriptURL":"js/Vietduino_Ultrasonic.js",
+  	"firmware":"1.0",
+  	"extensionPort":0,
+	"tags" : "makeblock,demo",
+	"blockSpecs": [
+		["h","Vietduino Program","runArduino"],
+
+		[
+			"r",
+			"Vietduino_Ultrasonic_Sensor_Read Port %d.port  max-Distance  %n (cm) ",
+			"Vietduino_Ultrasonic_Sensor_Read",
+			"P2",
+			"100",
+			{
+				"setup":"",
+				"inc":"#include \"Vietduino_Ultrasonic.h\"\n#include \"Vietduino_NewFunction.h\"\n#include \"Servo.h\"\n" ,
+				"def":"Vietduino_Ultrasonic ultra{0}({0},{1});\n",
+				"work":"ultra{0}.getMeasure()",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		]
+
+	],
+	"menus": {
+		"port":["P12","P11","P2"]
+	},
+	"values":{
+		"P12":12,
+		"P11":11,
+		"P2":2
+	},
+	"translators":{
+		"zh_CN":{
+			"Demo Program":"演示程序",
+			"HIGH":"高电平",
+			"LOW":"低电平",
+			"digitalWrite( %n , %d.digital )":"数字口输出( %n ,%d.digital )",
+      "blink":"闪烁"
+		}
+	}
+}
