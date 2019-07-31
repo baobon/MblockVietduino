@@ -1,0 +1,68 @@
+{	
+	"extensionName": "Vietduino_Sensor",
+	"description": "Vietduino_Sensor extensions for Arduino",
+	"version": "1.0",
+	"author": "BQB - Vietduino.com",
+	"homepage": "Vietduino.com",
+	"sort":0,
+	"javascriptURL":"js/Vietduino_Sensor.js",
+  	"firmware":"1.0",
+  	"extensionPort":0,
+	"tags" : "makeblock,demo",
+	"blockSpecs": [
+		["h","Vietduino Program","runArduino"],
+
+		[
+			"r",
+			"DHT_Sensor %d.dhttype pin %d.dhtport read Temperature",
+			"DHT Temp",
+			"DHT11",
+			"P9",
+			{
+				"setup":"",
+				"inc":"#include \"Vietduino_DHT.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def":"Vietduino_DHT SensorDHT{1}({1},{0});\n",
+				"work":"SensorDHT{1}.readTemperature()",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+		[
+			"r",
+			"DHT_Sensor %d.dhttype pin %d.dhtport read Humidity",
+			"DHT Humi",
+			"DHT11",
+			"P9",
+			{
+				"setup":"",
+				"inc":"#include \"Vietduino_DHT.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def":"Vietduino_DHT SensorDHT{1}({1},{0});\n",
+				"work":"SensorDHT{1}.readHumidity()",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		]
+
+	],
+	"menus": {
+		"dhttype":["DHT11","DHT22","DHT21"],
+		"dhtport":["P12","P11","P2","P9"],
+	},
+	"values":{
+		"DHT11":11,
+		"DHT22":22,
+		"DHT21":21,
+		"P12":12,
+		"P11":11,
+		"P2":2,
+		"P9":9
+	},
+	"translators":{
+		"zh_CN":{
+			"Demo Program":"演示程序",
+			"HIGH":"高电平",
+			"LOW":"低电平",
+			"digitalWrite( %n , %d.digital )":"数字口输出( %n ,%d.digital )",
+      "blink":"闪烁"
+		}
+	}
+}
