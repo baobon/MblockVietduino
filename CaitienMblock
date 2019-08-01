@@ -1,5 +1,0 @@
--------------------- Một số việc cần cải tiến -----------------
-
-*	Speed DC Motor tính % -> Thay vì từ 0-255 -> Theo 0%-100%
-*	Vì trùng dữ liện nên LeftMotor = 2 , RightMotor = 3;
-*	

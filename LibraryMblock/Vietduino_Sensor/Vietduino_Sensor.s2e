@@ -40,12 +40,29 @@
 				"work":"SensorDHT{1}.readHumidity()",
 				"loop":"VIETDUINO_UPDATE;"
 			}
+		],
+
+				[
+		"r",
+			"LM35_Sensor %d.lm35port read Temperature",
+			"LM35_Sensor",
+			"A0",
+			{
+				"setup":"LM35_{0}.begin();\n",
+				"inc":"#include \"Vietduino_LM35.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def":"Vietduino_LM35 LM35_{0}(A{0});\n",
+				"work":"LM35_{0}.readTemperature()",
+				"loop":"VIETDUINO_UPDATE;"
+			}
 		]
+
+
 
 	],
 	"menus": {
 		"dhttype":["DHT11","DHT22","DHT21"],
 		"dhtport":["P12","P11","P2","P9"],
+		"lm35port":["A0","A1","A2"]
 	},
 	"values":{
 		"DHT11":11,
@@ -54,7 +71,11 @@
 		"P12":12,
 		"P11":11,
 		"P2":2,
-		"P9":9
+		"P9":9,
+		"A0":0,
+		"A1":1,
+		"A2":2,
+
 	},
 	"translators":{
 		"zh_CN":{
