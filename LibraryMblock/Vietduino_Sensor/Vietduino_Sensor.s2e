@@ -14,7 +14,7 @@
 
 		[
 			"r",
-			"DHT_Sensor %d.dhttype pin %d.dhtport read Temperature",
+			"DHT_Sensor %d.dhttype pin %d.digitalPort read Temperature",
 			"DHT Temp",
 			"DHT11",
 			"P9",
@@ -29,7 +29,7 @@
 
 		[
 			"r",
-			"DHT_Sensor %d.dhttype pin %d.dhtport read Humidity",
+			"DHT_Sensor %d.dhttype pin %d.digitalPort read Humidity",
 			"DHT Humi",
 			"DHT11",
 			"P9",
@@ -42,9 +42,12 @@
 			}
 		],
 
-				[
+
+
+
+		[
 		"r",
-			"LM35_Sensor %d.lm35port read Temperature",
+			"LM35_Sensor %d.analogPort read Temperature",
 			"LM35_Sensor",
 			"A0",
 			{
@@ -54,15 +57,105 @@
 				"work":"LM35_{0}.readTemperature()",
 				"loop":"VIETDUINO_UPDATE;"
 			}
-		]
+		],
 
+
+
+
+		[
+		"r",
+			"Rain_Sensor %d.digitalPort read Digital",
+			"Rain_Sensor_D",
+			"P12",
+			{
+				"setup":"",
+				"inc":"#include \"Vietduino_Rain.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def":"Vietduino_Rain RainSensor{0}({0});\n",
+				"work":"RainSensor{0}.read_digitalRain()",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+		[
+		"r",
+			"Rain_Sensor %d.analogPort read Analog",
+			"Rain_Sensor_A",
+			"A0",
+			{
+				"setup":"",
+				"inc":"#include \"Vietduino_Rain.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def":"Vietduino_Rain RainSensor{0}(A{0});\n",
+				"work":"RainSensor{0}.read_analogRain()",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+
+
+		[
+		"r",
+			"SoilMoisture_Sensor %d.digitalPort read Digital",
+			"SoilMoisture_Sensor_D",
+			"P12",
+			{
+				"setup":"",
+				"inc":"#include \"Vietduino_SoilMoisture.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def":"Vietduino_SoilMoisture SoilMoisture{0}({0});\n",
+				"work":"SoilMoisture{0}.read_digitalSoil()",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+		[
+		"r",
+			"SoilMoistureSensor %d.analogPort read Analog",
+			"SoilMoistureSensor_A",
+			"A0",
+			{
+				"setup":"",
+				"inc":"#include \"Vietduino_LightCDS.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def":"Vietduino_LightCDS SoilMoisture{0}(A{0});\n",
+				"work":"SoilMoisture{0}.read_analogSoid()",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+
+
+		[
+		"r",
+			"LightCDS_Sensor %d.digitalPort read Digital",
+			"LightCDS_Sensor_D",
+			"P12",
+			{
+				"setup":"",
+				"inc":"#include \"Vietduino_LightCDS.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def":"Vietduino_LightCDS lightCDS{0}({0});\n",
+				"work":"lightCDS{0}.read_digitalCDS()",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+		[
+		"r",
+			"LightCDS_Sensor %d.analogPort read Analog",
+			"LightCDS_Sensor_A",
+			"A0",
+			{
+				"setup":"",
+				"inc":"#include \"Vietduino_LightCDS.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def":"Vietduino_LightCDS lightCDS{0}(A{0});\n",
+				"work":"lightCDS{0}.read_analogCDS()",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		]
 
 
 	],
 	"menus": {
 		"dhttype":["DHT11","DHT22","DHT21"],
-		"dhtport":["P12","P11","P2","P9"],
-		"lm35port":["A0","A1","A2"]
+		"digitalPort":["P12","P11","P2","P9"],
+		"analogPort":["A0","A1","A2"],
 	},
 	"values":{
 		"DHT11":11,
