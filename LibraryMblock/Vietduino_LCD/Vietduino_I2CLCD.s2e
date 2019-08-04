@@ -1,0 +1,141 @@
+{	
+	"extensionName": "Vietduino_LCD",
+	"description": "Vietduino_Program extensions for Arduino",
+	"version": "1.0",
+	"author": "BQB - Vietduino.com",
+	"homepage": "Vietduino.com",
+	"sort":0,
+	"javascriptURL":"js/Vietduino_I2CLCD.js",
+  	"firmware":"1.0",
+  	"extensionPort":0,
+	"tags" : "makeblock,demo",
+	"blockSpecs": [
+		["h","Vietduino Program","runArduino"],
+
+		[
+			"w",
+			"Set LCD %d.character x %d.lines at address %d.address",
+			"Set LCD",
+			16,
+			2,
+			"0x27",
+			{
+				"setup":"lcd{2}.init();\n",
+				"inc":"#include \"Vietduino_I2CLCD.h\"\n#include \"Vietduino_NewFunction.h\"\n",
+				"def":"Vietduino_I2CLCD lcd{2}({2},{0},{1});\n",
+				"work":"",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+		[
+			"w",
+			"LCD %d.address Char %d.char - Line %d.line Write %s ",
+			"LCD Write",
+			"0x27",
+			0,
+			0,
+			"Hello Vietduino",
+			{
+				"setup":"",
+				"inc":"#include \"Vietduino_I2CLCD.h\"\n#include \"Vietduino_NewFunction.h\"\n",
+				"def":"",
+				"work":"lcd{0}.setCursor({1},{2});\nlcd{0}.print({3});\n",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+		[
+			"w",
+			"LCD %d.address Turn ON the Backlight",
+			"Turn on light",
+			"0x27",
+			{
+				"setup":"",
+				"inc":"#include \"Vietduino_I2CLCD.h\"\n#include \"Vietduino_NewFunction.h\"\n",
+				"def":"",
+				"work":"lcd{0}.backlight();\n",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+		[
+			"w",
+			"LCD %d.address Turn OFF the Backlight",
+			"Turn off light",
+			"0x27",
+			{
+				"setup":"",
+				"inc":"#include \"Vietduino_I2CLCD.h\"\n#include \"Vietduino_NewFunction.h\"\n",
+				"def":"",
+				"work":"lcd{0}.noBacklight();\n",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+		[
+			"w",
+			"LCD %d.address Clear",
+			"LCD clear",
+			"0x27",
+			{
+				"setup":"",
+				"inc":"#include \"Vietduino_I2CLCD.h\"\n#include \"Vietduino_NewFunction.h\"\n",
+				"def":"",
+				"work":"lcd{0}.clear();\n",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+		[
+			"w",
+			"LCD %d.address Scroll Display Left",
+			"LCD display left",
+			"0x27",
+			{
+				"setup":"",
+				"inc":"#include \"Vietduino_I2CLCD.h\"\n#include \"Vietduino_NewFunction.h\"\n",
+				"def":"",
+				"work":"lcd{0}.scrollDisplayLeft();\n",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+		[
+			"w",
+			"LCD %d.address Scroll Display Right",
+			"LCD display right",
+			"0x27",
+			{
+				"setup":"",	
+				"inc":"#include \"Vietduino_I2CLCD.h\"\n#include \"Vietduino_NewFunction.h\"\n",
+				"def":"",
+				"work":"lcd{0}.scrollDisplayRight();\n",
+				"loop":"VIETDUINO_UPDATE;"
+			}
+		],
+
+
+
+	],
+	"menus": {
+	"address":["0x27","0x30","0x38"],
+	"character":[16,20],
+	"lines":[2,4],
+	"char":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],
+	"line":[0,1,2,3]
+	},
+	"values":{
+
+
+	},
+	"translators":{
+		"zh_CN":{
+			"Demo Program":"演示程序",
+			"HIGH":"高电平",
+			"LOW":"低电平",
+			"digitalWrite( %n , %d.digital )":"数字口输出( %n ,%d.digital )",
+      "blink":"闪烁"
+		}
+	}
+}

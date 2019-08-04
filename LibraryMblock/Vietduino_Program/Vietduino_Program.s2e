@@ -19,7 +19,7 @@
 			"Vietduino Hello",
 			{
 				"setup":"Serial.begin(115200);\n",
-				"inc":"#include \"Vietduino_NewFunction.h\"\n#include \"Servo.h\"\n",
+				"inc":"#include \"Vietduino_NewFunction.h\"\n",
 				"def":"",
 				"work":"Serial.println({0});\n",
 				"loop":"VIETDUINO_UPDATE;"
@@ -33,7 +33,7 @@
 			"11",
 			{
 				"setup":"pinMode({0},INPUT_PULLUP);\n",
-				"inc":"#include \"Vietduino_NewFunction.h\"\n#include \"Servo.h\"\n",
+				"inc":"#include \"Vietduino_NewFunction.h\"\n",
 				"def":"",
 				"work":"digitalRead({0})",
 				"loop":"VIETDUINO_UPDATE;"
@@ -47,7 +47,7 @@
 			"A0",
 			{
 				"setup":"pinMode(A{0},INPUT);\n",
-				"inc":"#include \"Vietduino_NewFunction.h\"\n#include \"Servo.h\"\n",
+				"inc":"#include \"Vietduino_NewFunction.h\"\n",
 				"def":"",
 				"work":"analogRead(A{0})\n",
 				"loop":"VIETDUINO_UPDATE;"
@@ -62,12 +62,12 @@
 			"HIGH",
 			{
 				"setup":"pinMode({0},OUTPUT);\n",
-				"inc":"#include \"Vietduino_NewFunction.h\"\n#include \"Servo.h\"\n",
+				"inc":"#include \"Vietduino_NewFunction.h\"\n",
 				"def":"",
 				"work":"digitalWrite({0},{1});\n",
 				"loop":"VIETDUINO_UPDATE;"
 			}
-		],
+		]
 
 
 

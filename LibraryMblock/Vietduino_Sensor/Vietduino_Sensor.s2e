@@ -113,8 +113,8 @@
 			"A0",
 			{
 				"setup":"",
-				"inc":"#include \"Vietduino_LightCDS.h\"\n#include \"Vietduino_NewFunction.h\" \n",
-				"def":"Vietduino_LightCDS SoilMoisture{0}(A{0});\n",
+				"inc":"#include \"Vietduino_SoilMoisture.h\"\n#include \"Vietduino_NewFunction.h\" \n",
+				"def":"Vietduino_SoilMoisture SoilMoisture{0}(A{0});\n",
 				"work":"SoilMoisture{0}.read_analogSoid()",
 				"loop":"VIETDUINO_UPDATE;"
 			}
@@ -148,7 +148,24 @@
 				"work":"lightCDS{0}.read_analogCDS()",
 				"loop":"VIETDUINO_UPDATE;"
 			}
+		],
+
+		[
+			"r",
+			"Vietduino_Ultrasonic_Sensor_Read Port %d.digitalPort  max-Distance  %n (cm) ",
+			"Vietduino_Ultrasonic_Sensor_Read",
+			"P2",
+			"100",
+			{
+				"setup":"",
+				"inc":"#include \"Vietduino_Ultrasonic.h\"\n#include \"Vietduino_NewFunction.h\"\n#include \"Servo.h\"\n" ,
+				"def":"Vietduino_Ultrasonic ultra{0}({0},{1});\n",
+				"work":"ultra{0}.getMeasure()",
+				"loop":"VIETDUINO_UPDATE;"
+			}
 		]
+
+
 
 
 	],
