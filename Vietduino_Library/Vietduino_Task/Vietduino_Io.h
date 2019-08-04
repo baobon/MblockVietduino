@@ -45,7 +45,7 @@
 #if defined(__AVR_ATmega2560__) || defined(__AVR_ATmega328__) || defined(__AVR_ATmega328P__)
     #define __MAVR__ // tem
 #elif defined(CORE_ESP8266_FEATURES_H)
-    #define ARDUINO_ARCH_ESP8266 // tem
+    // #define ARDUINO_ARCH_ESP8266 // tem
 #endif
 
 
